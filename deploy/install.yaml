@@ -1,0 +1,21 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+  name: busybox-catalog
+  namespace: operators
+spec:
+  displayName: Busybox Catalog
+  image: quay.io/agreene/new-busybox-index:1.0.0
+  sourceType: grpc
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: busybox-sub
+  namespace: operators
+spec:
+  channel: alpha
+  installPlanApproval: Automatic
+  name: busybox
+  source: busybox-catalog
+  sourceNamespace: operators
